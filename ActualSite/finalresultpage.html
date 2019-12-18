@@ -1,0 +1,207 @@
+<!-- 
+Our Names: Leonardo P, Mehreen J, Brian R, Patrick S
+Date Produced: 12/10/2019
+Purpose of this Webpage: To present the user with what he/she has selected as their meals for their meal plan.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Results!</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+body {
+    font: 100% / 162% verdana, arial, helvetica, sans-serif;
+ background-color: #f0ffff;
+ }
+
+/* Top/logo Title */
+.top {
+  padding: 35px;
+  text-align: center;
+  color: white;
+  background-image: url("background.jpg");
+  background-size:100% 100%;
+}
+
+/* Sticky navbar*/
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  top: 0;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 17px 25px;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+
+table, tr, td
+{
+	border: 2px solid black;
+	background-color: #8ce37d;
+	border-collapse: collapse;
+}
+tr, td
+{
+	border: 2px solid black;
+	border-collapse: collapse;
+	padding: 8px;
+	text-align: center;
+}
+
+table th{
+border-left: 1px solid #000;
+    border-right: 1px solid #000;
+
+}
+table td {
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+	border-collapse: collapse;
+
+}
+
+table td:first-child {
+    border-left: none;
+}
+
+table td:last-child {
+    border-right: none;
+}
+
+/* Bottom */
+.bottom {
+  padding: 2px;
+  text-align: center;
+  background-color: #white;
+}
+</style>
+</head>
+
+<body>
+<!-- Header -->
+<div class="top">
+<img src="logo.png"></img>
+</div>
+
+<!-- Navigation bar -->
+<div class="navbar">
+<a href="healthyliving.html">HEALTHY LIVING</a>
+<a href="exercising.html">EXERCISING</a>
+<a href="aging.html">AGING</a>
+<a href="aboutus.html" class="right">ABOUT US</a>
+<a href="entrypage.html" class="right">WELCOME</a>
+<a href="homepage.html" class="right">HOME</a>
+</div>
+  
+<h2 id = "name" align = "center"></h2>
+<h2 align = "center"> Your daily food plan is below:</h2>
+
+<!-- User's meal plan is presented in the table below with the calories suggested and remaining calories -->
+<table align = "center">
+<tr>
+<th>Breakfast</th>
+<th>Lunch</th>
+<th>Dinner</th>
+</tr>
+<tr>
+	<td>
+		<span id = "breakfast"></span>
+	</td>
+	<td>
+		<span id = "lunch"></span>
+	</td>
+	<td>
+		<span id = "dinner"></span>
+	</td>
+</tr>
+<tr>
+	<td colspan = '3'>
+		<p>Total number of Calories you should take: <span id = "result"></span></p>
+	</td>
+</tr>
+<tr>
+	<td colspan = '3'>
+		<p>Total number of Calories remaining: <span id = "remaining"></span></p>
+	</td>
+</tr>
+<tr>
+	<td colspan = '3'>
+		<p id = "message"></p>
+		<p>If you hit the go back button, it will take you directly back to your menu.</p>
+	</td>
+</tr>
+</table>
+
+<br>
+<form action="calculatemenupage.html">
+<input type="submit" value="Go Back" />
+</form>
+<br><br>
+
+<!-- Footer -->
+<div class="bottom"><img src="contact.png"width="75" height="75"</div>
+<br>
+<b>Contact Info</b><br>
+<b>Call: 111-111-1111 or <b>Email: 123@gmail.com</b>
+</div>
+
+</body>
+<SCRIPT LANGUAGE = "JAVASCRIPT">
+	document.getElementById("breakfast").innerHTML = localStorage.getItem("breakfastMeal");
+	document.getElementById("lunch").innerHTML = localStorage.getItem("lunchMeal");
+	document.getElementById("dinner").innerHTML = localStorage.getItem("dinnerMeal");
+	document.getElementById("result").innerHTML = localStorage.getItem("calories");
+	document.getElementById("name").innerHTML = localStorage.getItem("name");
+	document.getElementById("remaining").innerHTML = localStorage.getItem("lastCal");
+	
+	var msg1 = "Maintaining the amount of food a person consumes is good way of staying healthy. You have done a good job of keeping your calorie intake close to our calorie calculator. Stay healthy!";
+	var msg2 = "Looks like you are not eating enough food. Try adding more calories to get closer to the recommended calorie intake.";
+	var msg3 = "That's a lot of calories you want to consume. If you select another option with less calories for one of your meals, the amount of calories will go down.";
+	var checkRemainingCal = localStorage.getItem("lastCal");
+	var calories =  localStorage.getItem("calories");
+	
+	if(calories - (calories - checkRemainingCal) > 250){
+		document.getElementById("message").innerHTML = msg2;
+	}else if(calories - (calories - checkRemainingCal) < (-250)){
+		document.getElementById("message").innerHTML = msg3;
+	}else{
+		document.getElementById("message").innerHTML = msg1;
+	}
+</SCRIPT>
+</html>

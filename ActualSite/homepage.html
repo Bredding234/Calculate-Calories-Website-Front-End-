@@ -1,0 +1,367 @@
+<!-- 
+Our Names: Leonardo P, Mehreen J, Brian R, Patrick S
+Date Produced: 12/10/2019
+Purpose of this Webpage: Provide general information about calories and calorie intake. 
+Calorie Calculator provides the number of calories a person need in a day (depending on their activity level, age and gender) to maintain their weight. 
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calorie Input</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+    font: 100% / 162% verdana, arial, helvetica, sans-serif;
+ background-color: #f0ffff;
+ }
+
+/* Top/logo Title */
+.top {
+  padding: 35px;
+  text-align: center;
+  color: white;
+  background-image: url("background.jpg");
+  background-size:100% 100%;
+
+}
+
+/* Sticky navbar*/
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  top: 0;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 17px 25px;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Main Body */
+.MainBody {   
+  -ms-flex: 75%; 
+  flex: 75%;
+background-color: #f0ffff;
+  padding: 20px;
+}
+
+/* Add image */
+.addimg {
+  width: 100%;
+  padding: 20px;
+}
+
+/* Bottom */
+.bottom {
+  padding: 2px;
+  text-align: center;
+  background-color: white;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+.align-center {
+    display: block;
+    margin: 1.0em auto;
+    text-align: center;
+}
+</style>
+<script>
+
+// Gets user input for name, gender, age, activity level and saves it in local storage:
+function saveData() { 
+	localStorage.removeItem("age");
+	var gender = '';
+	if(document.getElementById('rbMale').checked) {
+		gender = document.getElementById("rbMale").value;
+	}else if(document.getElementById('rbFemale').checked) {
+		gender = document.getElementById("rbFemale").value;
+	}
+	
+	var activity = '';
+	if(document.getElementById('sedentary').checked) {
+		activity = document.getElementById("sedentary").value;
+	}else if(document.getElementById('mactive').checked) {
+		activity = document.getElementById("mactive").value;
+	}else if(document.getElementById('active').checked) {
+		activity = document.getElementById("active").value;
+	}
+		
+	var age = document.getElementById("age").value;
+	var name = document.getElementById("user").value;
+	
+	localStorage.setItem("gender", gender);
+	localStorage.setItem("age", age);
+	localStorage.setItem("activity", activity);
+	localStorage.setItem("name", name);
+} 
+// Retreive data from local storage in order to calculate the calorie intake for user:
+function calculateCalorie(){ 
+	var gender = localStorage.getItem("gender");
+	var activity = localStorage.getItem("activity");
+	
+	var age = localStorage.getItem("age");
+	
+	cal = getCalorie(gender,age,activity);
+	localStorage.setItem("calories", cal);
+} 
+
+// calculate the calorie allowance depending on the information the user entered:
+function getCalorie(gender,age,activity){
+	var result = '';
+	if(age<=3 && age>=2){
+		if(activity==='sedentary'){
+			result = '1000';
+		}else if(activity==='mactive'){
+			result = '1400';
+		}else if(activity==='active'){
+			result = '1400';
+		}
+	}else if(age<=8 && age>=4){
+		if(gender==='male'){
+			if(activity==='sedentary'){
+				result = '1400';
+			}else if(activity==='mactive'){
+				result = '1600';
+			}else if(activity==='active'){
+				result = '2000';
+			}
+		}else if(gender==='female'){
+			if(activity==='sedentary'){
+				result = '1200';
+			}else if(activity==='mactive'){
+				result = '1600';
+			}else if(activity==='active'){
+				result = '1800';
+			}
+		}
+	}else if(age<=13 && age>=9){
+		if(gender==='male'){
+			if(activity==='sedentary'){
+				result = '1800';
+			}else if(activity==='mactive'){
+				result = '2200';
+			}else if(activity==='active'){
+				result = '2600';
+			}
+		}else if(gender==='female'){
+			if(activity==='sedentary'){
+				result = '1600';
+			}else if(activity==='mactive'){
+				result = '2000';
+			}else if(activity==='active'){
+				result = '2200';
+			}
+		}
+	}else if(age<=18 && age>=14){
+		if(gender==='male'){
+			if(activity==='sedentary'){
+				result = '2200';
+			}else if(activity==='mactive'){
+				result = '2800';
+			}else if(activity==='active'){
+				result = '3200';
+			}
+		}else if(gender==='female'){
+			if(activity==='sedentary'){
+				result = '1800';
+			}else if(activity==='mactive'){
+				result = '2000';
+			}else if(activity==='active'){
+				result = '2400';
+			}
+		}
+	}else if(age<=30 && age>=19){
+		if(gender==='male'){
+			if(activity==='sedentary'){
+				result = '2400';
+			}else if(activity==='mactive'){
+				result = '2800';
+			}else if(activity==='active'){
+				result = '3000';
+			}
+		}else if(gender==='female'){
+			if(activity==='sedentary'){
+				result = '2000';
+			}else if(activity==='mactive'){
+				result = '2200';
+			}else if(activity==='active'){
+				result = '2400';
+			}
+		}
+	}else if(age<=50 && age>=31){
+		if(gender==='male'){
+			if(activity==='sedentary'){
+				result = '2200';
+			}else if(activity==='mactive'){
+				result = '2600';
+			}else if(activity==='active'){
+				result = '3000';
+			}
+		}else if(gender==='female'){
+			if(activity==='sedentary'){
+				result = '1800';
+			}else if(activity==='mactive'){
+				result = '2000';
+			}else if(activity==='active'){
+				result = '2200';
+			}
+		}
+	}else if(age>=51){
+		if(gender==='male'){
+			if(activity==='sedentary'){
+				result = '1600';
+			}else if(activity==='mactive'){
+				result = '1800';
+			}else if(activity==='active'){
+				result = '2200';
+			}
+		}else if(gender==='female'){
+			if(activity==='sedentary'){
+				result = '1800';
+			}else if(activity==='mactive'){
+				result = '2000';
+			}else if(activity==='active'){
+				result = '2200';
+			}
+		}
+	}
+	return result;
+}
+
+</script>
+</head>
+
+<!-- Header -->
+<div class="top">
+<img src="logo.png"></img>
+</div>
+
+<!-- Navigation bar -->
+<div class="navbar">
+<a href="healthyliving.html">HEALTHY LIVING</a>
+<a href="exercising.html">EXERCISING</a>
+<a href="aging.html">AGING</a>
+<a href="aboutus.html" class="right">ABOUT US</a>
+<a href="homepage.html" class="right">HOME</a>
+<a href="entrypage.html" class="right">WELCOME</a>
+</div>
+ 
+<!-- Main body that explains what Calories are and how many you need per day  -->
+<div class="MainBody">
+    
+<h2 align="center">What Are Calories?</h2>
+    
+<div class="addimg" align="center"; ><img src="calories.jpg" width="350" height="300"></div>
+<h3>A calorie is a unit that measures energy. 
+Calories are usually used to measure the energy content of foods and beverages. 
+To lose weight, you need to eat fewer calories than your body burns each day.</h3>	
+<br>
+
+<h2 align="center">How Many Calories You Need Per Day?</h2>
+    
+<div class="addimg" align="center"; ><img src="caloriesdaily.jpg" width="350" height="300"></div>
+<h3>Depending on whether you want to maintain, lose or gain weight, as well as few other factors 
+like your gender, age, height, current weight and activity level.
+</h3>
+<br>
+
+<div class="addimg" align="center"; ><img src="caloriecalculator.jpg" width="850" height="150"></div>
+<br>
+
+<!-- Form to take the user data including name, age, gender, and their activity level -->
+<form>
+
+<fieldset class = "align-center" name = "survey" style=" background-color:#f1f1f1;">
+<legend style="font-size:larger" align = "center"><b>Fill in Your Information</b>:</legend><br>
+<label for="user">Name:</label>
+<input type="text" id="user" size="25"> <br><br>
+<label for="gender">Gender:</label>
+<input type="radio" id="rbMale" name="gender" value="male"> Male </input>
+<input type="radio" id="rbFemale" name="gender" value="female">Female </input> <br><br>
+<label for="age">Age:</label>
+<input type="text" id="age" size="3"/> <br />
+<br>
+<b style="font-size:larger" >Check the activity level that best matches your lifestyle:</b>
+</p>
+
+<input type="radio" name="activity" value="sedentary" id="sedentary"/> 
+<b>Sedentary</b>: 
+Most days, you are mainly sitting,sleeping,
+reading, or in front of your computer.<br><br>
+
+<input type="radio" name="activity" value="mactive" id="mactive"/> 
+<b>Moderately Active</b>: 
+You barely sit during the day and do heavy 
+chores, gardening, dancing, exercising.<br><br>
+
+<input type="radio" name="activity" value="active" id="active"/> 
+<b>Very Active</b>: 
+You are into physical sports. Jogging or biking is your thing 
+or you have a labor-intensive job. 
+<br><br>
+
+<!-- Reset button allows user to re-enter data altogether -->
+<form align="center" action="reset()" method="post">
+<input type="reset" value="RESET">
+</form>
+
+<br><br>
+
+<!-- Next button takes the user to the next page where their allowed calories are displayed -->
+<form align="center" action="calculatemenupage.html" method="post" onSubmit="calculateCalorie()">
+<input type="submit" value="NEXT" onClick = "return saveData()">
+</form>
+
+</form>
+
+</fieldset>
+	
+<br>
+<h4>Disclaimer...</h4>
+<p>If you're a competitive athlete, have a metabolic disease, such as diabetes, and pregnant or breast-feeding,
+the calorie calculator may overestimate or underestimate your actual calorie needs.</p>
+<br>
+</div>
+
+<!-- Bottom/Footer for contact information --> 
+<div class="bottom"><img src="contact.png"width="75" height="75"><br>
+<br><b>Call: 111-111-1111 or <b>Email: 123@gmail.com</b>
+<p> <a href="aboutus.html">Sources</a>
+</div>
+
+</body>
+</html>

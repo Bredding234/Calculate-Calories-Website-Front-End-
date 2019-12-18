@@ -1,0 +1,450 @@
+<!-- 
+Our Names: Leonardo P, Mehreen J, Brian R, Patrick S
+Date Produced: 12/10/2019
+Purpose of this Webpage: Allows the user to select the meal they wish to have based upon what they select.
+	The page will also calculate the remaining calories the user has once they have selected a meal they 
+	wish to have. Information from the homepage is passed so that it can calculate the remaining calories.
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/caloriecalculator.js"></script>
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1">
+<title>Meal Plan</title>
+<style media="screen">
+body {
+    background-image: url("images/background.jpg");
+    background-repeat:repeat;
+    background-size: 500px;
+    background-color: #f0f0f0;
+    font: 100% / 162% verdana, arial, helvetica, sans-serif;
+ }
+ 
+ /* NAV BAT*/
+.mealheader {
+	padding: 20px;
+	text-align: center;
+	background: #bd3d49;
+	color: white;
+	font-size: 15px;
+}
+.footer {
+	padding: 20px;
+	text-align: center;
+	background: #bd3d49;
+	color: white;
+    font-size: 15px;
+}
+.header {
+	padding: 60px;
+	text-align: center;
+	background: #c4707f;
+	color: white;
+	font-size: 30px;
+}
+.subheader {
+	padding: 20px;
+	text-align: center;
+	background: #af4b5f;
+	color: white;
+	font-size: 20px;
+}
+/* Top/logo Title */
+.top {
+    z-index:99;
+	padding: 35px;
+	text-align: center;
+	color: white;
+	background-image: url("background.jpg");
+	background-size:100% 100%;
+}
+
+/* Sticky navbar*/
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    top: 0;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+    z-index:99;
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 17px 25px;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+    z-index:99;
+    float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+    z-index:99;
+    background-color: #ddd;
+    color: black;
+}
+
+/* Column container */
+.row {  
+        z-index:99;
+
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+/*          Menu          */
+.img-holder {
+	position: absolute;
+    left: 20%;
+	position: center;
+	align: left-side;
+    max-width: 8em;
+    padding: 0.25em;
+    margin: auto;
+    border: 0.062em solid #999;
+    background-color: #fff;
+    box-shadow:  inset 0 0 1em rgba( 0, 0, 0, 0.0 ),
+          0.25em 0.25em 0.25em rgba( 0, 0, 0, 0.3 );
+    transition: 0.5s ease-in-out;
+ }
+ .img-holder2 {
+    position: absolute;
+    left: 40%;
+	position: left;
+	align: left-side;
+    max-width: 8em;
+    padding: 0.25em;
+    margin: auto;
+    border: 0.062em solid #999;
+    background-color: #fff;
+    box-shadow:  inset 0 0 1em rgba( 0, 0, 0, 0.0 ),
+          0.25em 0.25em 0.25em rgba( 0, 0, 0, 0.3 );
+    transition: 0.5s ease-in-out;
+ }
+ .img-holder3 {
+    position: absolute;
+    left: 60%;
+	position: left;
+	align: left-side;
+    max-width: 8em;
+    padding: 0.25em;
+    margin: auto;
+    border: 0.062em solid #999;
+    background-color: #fff;
+    box-shadow:  inset 0 0 1em rgba( 0, 0, 0, 0.0 ),
+          0.25em 0.25em 0.25em rgba( 0, 0, 0, 0.3 );
+    transition: 0.5s ease-in-out;
+ }
+
+ .img-holder2 img {
+	align: left-side;
+    display: block;
+    width: 50%;
+    height: auto;
+    box-sizing:border-box;
+    transition: 0.5s ease-in-out;
+ }
+ 
+.img-holder2:hover {
+	align: left-side;
+    max-width: 12em;
+	max-height: auto;
+    padding: 1em;
+    border-radius: 0.75em;
+    box-shadow: inset 0 0 1em rgba( 0, 0, 0, 0.3 ), 
+            0.5em 0.5em 0.5em rgba( 0, 0, 0, 0.3 );
+ }
+
+.img-holder2:hover img {
+    border-radius: 0.5em;
+ }
+
+ .img-holder3 img {
+	align: left-side;
+    display: block;
+    width: 50%;
+    height: auto;
+    box-sizing:border-box;
+    transition: 0.5s ease-in-out;
+ }
+ 
+.img-holder3:hover {
+	align: left-side;
+    max-width: 12em;;
+	max-height: auto;
+    padding: 1em;
+    border-radius: 0.75em;
+    box-shadow: inset 0 0 1em rgba( 0, 0, 0, 0.3 ), 
+            0.5em 0.5em 0.5em rgba( 0, 0, 0, 0.3 );
+ }
+
+.img-holder3:hover img {
+    border-radius: 0.5em;
+ }
+.img-holder img {
+	align: center;
+    display: block;
+    width: 50%;
+    height: auto;
+    box-sizing:border-box;
+    transition: 0.5s ease-in-out;
+ }
+
+.img-holder:hover {
+	align: left-side;
+    max-width: 12em;
+	max-height: auto;
+    padding: 1em;
+    border-radius: 0.75em;
+    box-shadow: inset 0 0 1em rgba( 0, 0, 0, 0.3 ), 
+            0.5em 0.5em 0.5em rgba( 0, 0, 0, 0.3 );
+ }
+
+.img-holder:hover img {
+    border-radius: 0.5em;
+ }
+</style>
+<script>
+// Prints the amount of calories the user should have
+function calculateCalorie(){ 
+	document.getElementById("result").innerHTML = localStorage.getItem("calories");
+} 
+
+//Calculates remaining calories the user has based on what they selected.
+function calculateRemainingCalorie(calorie){
+	var totalCalorie = Number(document.getElementById("result").textContent);
+	var breakfastCalorie = 0;
+	var lunchCalorie = 0;
+	var dinnerCalorie = 0;
+	
+	var breakfastElement = document.getElementsByName('breakfast');    
+	for(i = 0; i < breakfastElement.length; i++) { 
+		if(breakfastElement[i].checked) {
+			breakfastCalorie = Number(breakfastElement[i].value);
+		}
+	} 
+	
+	var lunchElement = document.getElementsByName('lunch');    
+	for(i = 0; i < lunchElement.length; i++) { 
+		if(lunchElement[i].checked) {
+			lunchCalorie = Number(lunchElement[i].value);
+		}
+	} 
+	
+	var dinnerElement = document.getElementsByName('dinner');    
+	for(i = 0; i < dinnerElement.length; i++) { 
+		if(dinnerElement[i].checked) {
+			dinnerCalorie = Number(dinnerElement[i].value);
+		}
+	} 
+	
+	var remainingCalorie = totalCalorie - (breakfastCalorie+lunchCalorie+dinnerCalorie);
+	document.getElementById("remain").innerHTML = remainingCalorie;
+	localStorage.setItem("lastCal", remainingCalorie);
+}
+
+//Saves the names of the meals they want to have so that it can be called later in the next page
+function passDiet()
+{
+	var breakfastName;
+	var breakfastValue = 0;
+	var lunchName;
+	var lunchValue = 0;
+	var dinnerName;
+	var dinnerValue = 0;
+	
+	var breakfastElement = document.getElementsByName('breakfast');    
+	for(var i = 0; i < breakfastElement.length; i++) { 
+		if(breakfastElement[i].checked) {
+			breakfastValue = Number(breakfastElement[i].value);
+		}
+	} 
+	
+	var lunchElement = document.getElementsByName('lunch');    
+	for(var i = 0; i < lunchElement.length; i++) { 
+		if(lunchElement[i].checked) {
+			lunchValue = Number(lunchElement[i].value);
+		}
+	} 
+	
+	var dinnerElement = document.getElementsByName('dinner');    
+	for(var i = 0; i < dinnerElement.length; i++) { 
+		if(dinnerElement[i].checked) {
+			dinnerValue = Number(dinnerElement[i].value);
+		}
+	} 
+
+	if(breakfastValue == 300)
+	{
+		breakfastName = "Breakfast Burrito";
+	}else if(breakfastValue == 500)
+	{
+		breakfastName = "Breakfast Sandwich";
+	}else if(breakfastValue == 700)
+	{
+		breakfastName = "Hash Browns, Eggs, Sausage and Toast";
+	}else if(breakfastValue == 1000)
+	{
+		breakfastName = "Pancakes and Sausage";
+	}else if(breakfastValue == 1200)
+	{
+		breakfastName = "Eggs, Hash Browns, Sausage, Pancakes and Toast";
+	}else
+	{
+		breakfastName = "None";
+	}
+	
+	if(lunchValue == 300)
+	{
+		lunchName = "Grilled Chicken Salad";
+	}else if(lunchValue == 500)
+	{
+		lunchName = "Fried Chicken Salad";
+	}else if(lunchValue == 700)
+	{
+		lunchName = "Bacon Cheeseburger";
+	}else if(lunchValue == 1000)
+	{
+		lunchName = "Cheeseburger, Fries and Coke";
+	}else if(lunchValue == 1200)
+	{
+		lunchName = "Fried Chicken, Fries and Coke";
+	}else{
+		lunchName = "None";
+	}
+	
+	if(dinnerValue == 400)
+	{
+		dinnerName = "Fried Chicken";
+	}else if(dinnerValue == 600)
+	{
+		dinnerName = "Big Mac";
+	}else if(dinnerValue == 800)
+	{
+		dinnerName = "Two Small Cheeseburger, Fries and Coke";
+	}else if(dinnerValue == 1200)
+	{
+		dinnerName = "Fried Chicken, Fries and Coke";
+	}else if(dinnerValue == 1400)
+	{
+		dinnerName = "Double Cheeseburger, Fries and Coke";
+	}else
+	{
+		dinnerName = "None";
+	}
+	
+	if((dinnerName == "None") && (lunchName == "None") && (breakfastName = "None")){
+		rcal = localStorage.getItem("calories");
+		localStorage.setItem("lastCal", rcal);
+	}
+	
+	localStorage.setItem("breakfastMeal", breakfastName);
+	localStorage.setItem("lunchMeal", lunchName);
+	localStorage.setItem("dinnerMeal", dinnerName);
+	
+}
+</script>
+
+</head>
+<body onload = "calculateCalorie()">
+<!-- Header -->
+<div class="top">
+<img src="logo.png"></img>
+</div>
+
+<!-- Navigation bar -->
+<div class="navbar">
+<a href="healthyliving.html">HEALTHY LIVING</a>
+<a href="exercising.html">EXERCISING</a>
+<a href="aging.html">AGING</a>
+<a href="aboutus.html" class="right">ABOUT US</a>
+<a href="entrypage.html" class="right">WELCOME</a>
+<a href="homepage.html" class="right">HOME</a>
+</div>
+</body>
+
+<!-- Beginning of Meal Planner -->
+ <div class="header">
+<h1> Meal Planner </h1>
+</div>
+
+<!-- Display total calorie intake of user -->
+<div class="subheader">
+<h3> Total Calories Allowed: <p id="result"></p></h3>
+</div>
+ 
+<!-- Column for Breakfast food -->
+<div class="img-holder"> 
+<div class="mealheader">
+<h3>Breakfast</h3>
+</div>
+<img  src="images/breakfast_300.jpg" width="20%" height="20%"  alt="Flower">
+<input onchange="calculateRemainingCalorie()" type="radio" name="breakfast" value="300"/> Breakfast Burrito | 300
+<img src="images/breakfast_500.jpg" width="20%" height="20%"  alt="Flower">
+<input onchange="calculateRemainingCalorie()" type="radio" name="breakfast" value="500"/> Breakfast Sandwich | 500
+<img src="images/breakfast_700.jpg" width="20%" height="20%"  alt="Flower">
+<input onchange="calculateRemainingCalorie()" type="radio" name="breakfast" value="700"/> Hash Browns, Eggs, Sausage and Toast | 700
+<img src="images/breakfast_1000.jpg" width="20%" height="20%"  alt="Flower">
+<input onchange="calculateRemainingCalorie()" type="radio" name="breakfast" value="1000"/> Pancakes and Sausage | 1000
+<img src="images/breakfast_1200.jpg" width="20%" height="20%"  alt="Flower">
+<input onchange="calculateRemainingCalorie()" type="radio" name="breakfast" value="1200"/> Eggs, Hash Browns, Sausage, Pancakes and Toast | 1200
+</div>
+
+<!-- Column for Lunch food -->
+<div class="img-holder2"> 
+<div class="mealheader">
+<h3>Lunch</h3>
+</div>
+<img src="images/lunch_300.jpg" width="20%" height="20%"  alt="Flower">
+<input onchange="calculateRemainingCalorie()" type="radio" name="lunch" value="300"> Grilled Chicken Salad | 300
+<img src="images/lunch_500.jpg" width="20%" height="20%"  alt="Flower">
+<input onchange="calculateRemainingCalorie()" type="radio" name="lunch" value="500"> Fried Chicken Salad | 500
+<img src="images/lunch_700.jpg" width="20%" height="20%"  alt="Flower">
+<input onchange="calculateRemainingCalorie()" type="radio" name="lunch" value="700"> Bacon Cheeseburger | 700
+<img src="images/lunch_1000.jpg" width="20%" height="20%"  alt="Flower">
+<input onchange="calculateRemainingCalorie()" type="radio" name="lunch" value="1000"> Cheeseburger, Fries and Coke | 1000
+<img src="images/lunch_1200.jpg" width="20%" height="20%"  alt="Flower">
+<input onchange="calculateRemainingCalorie()" type="radio" name="lunch" value="1200"> Fried Chicken, Fries and Code |1200
+</div>
+
+<!-- Column for Dinner food -->
+<div class="img-holder3"> 
+<div class="mealheader">
+<h3>Dinner</h3>
+</div>
+<img src="images/dinner_400.jpg" width="20%" height="20%"  alt="Flower">
+<input onchange="calculateRemainingCalorie()" type="radio" name="dinner" value="400"> Fried Chicken | 400
+<img src="images/dinner_600.jpg" width="20%" height="20%"  alt="Flower">
+<input onchange="calculateRemainingCalorie()" type="radio" name="dinner" value="600"> Big Mac | 600
+<img src="images/dinner_800.jpg" width="20%" height="20%"  alt="Flower">
+<input onchange="calculateRemainingCalorie()" type="radio" name="dinner" value="800"> Two Small Cheeseburger, Fries and Coke | 800
+<img src="images/dinner_1200.jpg" width="20%" height="20%"  alt="Flower">
+<input onchange="calculateRemainingCalorie()" type="radio" name="dinner" value="1200"> Fried Chicken, Fries and Code | 1200
+<img src="images/dinner_1400.jpg" width="20%" height="20%"  alt="Flower">
+<input onchange="calculateRemainingCalorie()" type="radio" name="dinner" value="1400"> Double Cheeseburger, Fries and Coke | 1400
+</div>
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+
+<!-- Displays the remaining calories after user selects a meal. After submitting, it calls the passDiet
+	function and moves user to next page which will present a table of their meal plan -->
+<div class="footer"> 
+<h1> Remaining Calories: </h1> <h1 id="remain"> Select a meal</h1>
+<form action="finalresultpage.html">
+<input type="submit" value="Results!" onClick = "passDiet()"/>
+</form>
+</div>
+</body>
+
+</html>

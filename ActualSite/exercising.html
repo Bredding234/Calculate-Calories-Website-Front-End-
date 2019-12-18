@@ -1,0 +1,170 @@
+<!-- 
+Our Names: Leonardo P, Mehreen J, Brian R, Patrick S
+Date Produced: 12/10/2019
+Purpose of this Webpage: Provide information regarding excercise and its healthy benefits. 
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Excercising</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+	font: 100% / 162% verdana, arial, helvetica, sans-serif;
+ background-color: #f0ffff;
+ 
+ }
+
+/* Top/logo Title */
+.top {
+  padding: 35px;
+  text-align: center;
+  color: white;
+  background-image: url("background.jpg");
+  background-size:100% 100%;
+
+}
+
+/* Sticky navbar*/
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  top: 0;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 17px 20px;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+	flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+	float: none;
+	width: 100%;
+  }
+}
+
+</style>
+<SCRIPT LANGUAGE = "JAVASCRIPT">
+<!-- Function passes the amount of  calories needed for males in the input box. -->
+
+function maleCalories(){
+    var MaleCalories = " Men must lose 2500 calories to maintain their body weight!";
+    document.getElementById('Male').value = MaleCalories;
+
+}
+<!-- Function passes the amount of  calories needed for females in the input box. -->
+function femaleCalories(){
+    var femaleCalories = " Women must lose 2000 calories to maintain their body weight!";
+    document.getElementById('Female').value = femaleCalories;
+
+}
+
+</SCRIPT>
+
+</head>
+<body>
+<!-- Header -->
+<div class="top">
+<img src="logo.png"></img>
+</div>
+<!-- Navigation Bar -->
+<div class="navbar">
+<a href="healthyliving.html">HEALTHY LIVING</a>
+<a href="excercising.html">EXERCISING</a>
+<a href="aging.html">AGING</a>
+<a href="aboutus.html" class="right">ABOUT US</a>
+<a href="homepage.html" class="right">HOME</a>
+<a href="entrypage.html" class="right">WELCOME</a>
+</div>
+
+
+<br>
+<!-- Main body that explains the benefits of exercise  -->
+
+<h2 align="center">THE HEALTHY BENEFITS OF EXCERCISING</h2>
+    <!-- Five benefits of exercises  within the body. -->
+
+<h3 align="center">1. Maintain your body weight.</h3>
+<div class="addimg" align="center";><img src="excercise.jpg" width="350" height="300" </div></div>
+
+<h4 align="center">Exercising plays an important role in keeping up with your body weight.
+Exercising allows you to lose calories and it prevents your chances of suffering from obesity.</h4>
+
+<p align="center">Find out how many calories on average a person should lose! <br>
+<button style = "text-align: center;" onclick = "maleCalories()" > Male Calories </button>  
+	<input type = "text" size = "50" name = "sum" id = "Male" readonly>  
+	<br>
+	<button onclick = "femaleCalories()"  >Female Calories </button> 
+	<input type = "text" size = "53" name = "sum" id = "Female" readonly>
+<br><br>
+<h3  align="center">2. Reduce your risk of heart diseases.</h3>
+<div class="addimg" align="center";><img src="heartdieases.jpg" width="350" height="300" </div></div>
+
+<h4 align="center">Exercising can strengthen your heart and improve your circulation.
+The increase blood can raise your oxygen levels in your body.
+After exercising, it can lower your risks of heart disease.</h4>
+<!-- Offsite link for more info -->
+
+<p align = "center"><a href = "https://medlineplus.gov/benefitsofexercise.html">More info</a></p>
+<br>
+<h3 align="center" >3. Help your body manage blood sugar and insulin levels.</h3>
+<div class="addimg" align="center";><img src="bloodsugar.jpg" width="350" height="300" </div></div>
+
+<h4 align="center">Exercising can lower your blood sugar level and help your insulin work better.</h4>
+<!-- Offsite link for more info -->
+
+<p align = "center"><a href = "https://medlineplus.gov/benefitsofexercise.html">More info</a></p>
+<br>
+<h3 align="center">4. Help you quit smoking.</h3>
+<div class="addimg" align="center";><img src="quitsmoke.jpg" width="350" height="300" </div></div>
+
+<h4 align="center">Exercise can slightly make it easier for you to quit smoking,
+in which it lowers your cravings and withdrawal symptoms.</h4>
+<!-- Offsite link for more info -->
+
+<p align = "center"><a href = "https://medlineplus.gov/benefitsofexercise.html">More info</a></p>
+<br>
+<h3 align="center">5.Improve your mental health and mood. </h3>
+<div class="addimg" align="center";><img src="bettermood.jpg" width="350" height="300" </div></div>
+
+<h4 align="center" >Exercise can improve your mood because it releases chemicals,
+which make you feel more relaxed.</h4>
+<!-- Offsite link for more info -->
+
+<p align = "center"><a href = "https://medlineplus.gov/benefitsofexercise.html">More info</a></p>
+<br>
+
+</div>
+</body>
+</html>
